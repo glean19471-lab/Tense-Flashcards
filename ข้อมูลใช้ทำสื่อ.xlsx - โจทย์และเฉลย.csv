@@ -1,0 +1,841 @@
+﻿โจทย์,เฉลย
+I / jump / always,I always jump.
+I / jump / sometimes,I sometimes jump.
+I / jump / never,I never jump.
+I / jump / now,I am jumping now.
+I / jump / at the moment,I am jumping at the moment.
+I / jump / right now,I am jumping right now.
+I / jump / yesterday,I jumped yesterday.
+I / jump / last week,I jumped last week.
+I / jump / an hour ago,I jumped an hour ago.
+I / jump / tomorrow,I will jump tomorrow.
+I / jump / next week,I will jump next week.
+I / jump / soon,I will jump soon.
+I / sleep / always,I always sleep.
+I / sleep / sometimes,I sometimes sleep.
+I / sleep / never,I never sleep.
+I / sleep / now,I am sleeping now.
+I / sleep / at the moment,I am sleeping at the moment.
+I / sleep / right now,I am sleeping right now.
+I / sleep / yesterday,I slept yesterday.
+I / sleep / last week,I slept last week.
+I / sleep / an hour ago,I slept an hour ago.
+I / sleep / tomorrow,I will sleep tomorrow.
+I / sleep / next week,I will sleep next week.
+I / sleep / soon,I will sleep soon.
+I / walk / always,I always walk.
+I / walk / sometimes,I sometimes walk.
+I / walk / never,I never walk.
+I / walk / now,I am walking now.
+I / walk / at the moment,I am walking at the moment.
+I / walk / right now,I am walking right now.
+I / walk / yesterday,I walked yesterday.
+I / walk / last week,I walked last week.
+I / walk / an hour ago,I walked an hour ago.
+I / walk / tomorrow,I will walk tomorrow.
+I / walk / next week,I will walk next week.
+I / walk / soon,I will walk soon.
+I / run / always,I always run.
+I / run / sometimes,I sometimes run.
+I / run / never,I never run.
+I / run / now,I am running now.
+I / run / at the moment,I am running at the moment.
+I / run / right now,I am running right now.
+I / run / yesterday,I ran yesterday.
+I / run / last week,I ran last week.
+I / run / an hour ago,I ran an hour ago.
+I / run / tomorrow,I will run tomorrow.
+I / run / next week,I will run next week.
+I / run / soon,I will run soon.
+I / dance / always,I always dance.
+I / dance / sometimes,I sometimes dance.
+I / dance / never,I never dance.
+I / dance / now,I am dancing now.
+I / dance / at the moment,I am dancing at the moment.
+I / dance / right now,I am dancing right now.
+I / dance / yesterday,I danced yesterday.
+I / dance / last week,I danced last week.
+I / dance / an hour ago,I danced an hour ago.
+I / dance / tomorrow,I will dance tomorrow.
+I / dance / next week,I will dance next week.
+I / dance / soon,I will dance soon.
+I / sit / always,I always sit.
+I / sit / sometimes,I sometimes sit.
+I / sit / never,I never sit.
+I / sit / now,I am sitting now.
+I / sit / at the moment,I am sitting at the moment.
+I / sit / right now,I am sitting right now.
+I / sit / yesterday,I sat yesterday.
+I / sit / last week,I sat last week.
+I / sit / an hour ago,I sat an hour ago.
+I / sit / tomorrow,I will sit tomorrow.
+I / sit / next week,I will sit next week.
+I / sit / soon,I will sit soon.
+I / stand / always,I always stand.
+I / stand / sometimes,I sometimes stand.
+I / stand / never,I never stand.
+I / stand / now,I am standing now.
+I / stand / at the moment,I am standing at the moment.
+I / stand / right now,I am standing right now.
+I / stand / yesterday,I stood yesterday.
+I / stand / last week,I stood last week.
+I / stand / an hour ago,I stood an hour ago.
+I / stand / tomorrow,I will stand tomorrow.
+I / stand / next week,I will stand next week.
+I / stand / soon,I will stand soon.
+I / swim / always,I always swim.
+I / swim / sometimes,I sometimes swim.
+I / swim / never,I never swim.
+I / swim / now,I am swimming now.
+I / swim / at the moment,I am swimming at the moment.
+I / swim / right now,I am swimming right now.
+I / swim / yesterday,I swam yesterday.
+I / swim / last week,I swam last week.
+I / swim / an hour ago,I swam an hour ago.
+I / swim / tomorrow,I will swim tomorrow.
+I / swim / next week,I will swim next week.
+I / swim / soon,I will swim soon.
+I / learn / always,I always learn.
+I / learn / sometimes,I sometimes learn.
+I / learn / never,I never learn.
+I / learn / now,I am learning now.
+I / learn / at the moment,I am learning at the moment.
+I / learn / right now,I am learning right now.
+I / learn / yesterday,I learned yesterday.
+I / learn / last week,I learned last week.
+I / learn / an hour ago,I learned an hour ago.
+I / learn / tomorrow,I will learn tomorrow.
+I / learn / next week,I will learn next week.
+I / learn / soon,I will learn soon.
+I / shout / always,I always shout.
+I / shout / sometimes,I sometimes shout.
+I / shout / never,I never shout.
+I / shout / now,I am shouting now.
+I / shout / at the moment,I am shouting at the moment.
+I / shout / right now,I am shouting right now.
+I / shout / yesterday,I shouted yesterday.
+I / shout / last week,I shouted last week.
+I / shout / an hour ago,I shouted an hour ago.
+I / shout / tomorrow,I will shout tomorrow.
+I / shout / next week,I will shout next week.
+I / shout / soon,I will shout soon.
+you / jump / always,you always jump.
+you / jump / sometimes,you sometimes jump.
+you / jump / never,you never jump.
+you / jump / now,you are jumping now.
+you / jump / at the moment,you are jumping at the moment.
+you / jump / right now,you are jumping right now.
+you / jump / yesterday,you jumped yesterday.
+you / jump / last week,you jumped last week.
+you / jump / an hour ago,you jumped an hour ago.
+you / jump / tomorrow,you will jump tomorrow.
+you / jump / next week,you will jump next week.
+you / jump / soon,you will jump soon.
+you / sleep / always,you always sleep.
+you / sleep / sometimes,you sometimes sleep.
+you / sleep / never,you never sleep.
+you / sleep / now,you are sleeping now.
+you / sleep / at the moment,you are sleeping at the moment.
+you / sleep / right now,you are sleeping right now.
+you / sleep / yesterday,you slept yesterday.
+you / sleep / last week,you slept last week.
+you / sleep / an hour ago,you slept an hour ago.
+you / sleep / tomorrow,you will sleep tomorrow.
+you / sleep / next week,you will sleep next week.
+you / sleep / soon,you will sleep soon.
+you / walk / always,you always walk.
+you / walk / sometimes,you sometimes walk.
+you / walk / never,you never walk.
+you / walk / now,you are walking now.
+you / walk / at the moment,you are walking at the moment.
+you / walk / right now,you are walking right now.
+you / walk / yesterday,you walked yesterday.
+you / walk / last week,you walked last week.
+you / walk / an hour ago,you walked an hour ago.
+you / walk / tomorrow,you will walk tomorrow.
+you / walk / next week,you will walk next week.
+you / walk / soon,you will walk soon.
+you / run / always,you always run.
+you / run / sometimes,you sometimes run.
+you / run / never,you never run.
+you / run / now,you are running now.
+you / run / at the moment,you are running at the moment.
+you / run / right now,you are running right now.
+you / run / yesterday,you ran yesterday.
+you / run / last week,you ran last week.
+you / run / an hour ago,you ran an hour ago.
+you / run / tomorrow,you will run tomorrow.
+you / run / next week,you will run next week.
+you / run / soon,you will run soon.
+you / dance / always,you always dance.
+you / dance / sometimes,you sometimes dance.
+you / dance / never,you never dance.
+you / dance / now,you are dancing now.
+you / dance / at the moment,you are dancing at the moment.
+you / dance / right now,you are dancing right now.
+you / dance / yesterday,you danced yesterday.
+you / dance / last week,you danced last week.
+you / dance / an hour ago,you danced an hour ago.
+you / dance / tomorrow,you will dance tomorrow.
+you / dance / next week,you will dance next week.
+you / dance / soon,you will dance soon.
+you / sit / always,you always sit.
+you / sit / sometimes,you sometimes sit.
+you / sit / never,you never sit.
+you / sit / now,you are sitting now.
+you / sit / at the moment,you are sitting at the moment.
+you / sit / right now,you are sitting right now.
+you / sit / yesterday,you sat yesterday.
+you / sit / last week,you sat last week.
+you / sit / an hour ago,you sat an hour ago.
+you / sit / tomorrow,you will sit tomorrow.
+you / sit / next week,you will sit next week.
+you / sit / soon,you will sit soon.
+you / stand / always,you always stand.
+you / stand / sometimes,you sometimes stand.
+you / stand / never,you never stand.
+you / stand / now,you are standing now.
+you / stand / at the moment,you are standing at the moment.
+you / stand / right now,you are standing right now.
+you / stand / yesterday,you stood yesterday.
+you / stand / last week,you stood last week.
+you / stand / an hour ago,you stood an hour ago.
+you / stand / tomorrow,you will stand tomorrow.
+you / stand / next week,you will stand next week.
+you / stand / soon,you will stand soon.
+you / swim / always,you always swim.
+you / swim / sometimes,you sometimes swim.
+you / swim / never,you never swim.
+you / swim / now,you are swimming now.
+you / swim / at the moment,you are swimming at the moment.
+you / swim / right now,you are swimming right now.
+you / swim / yesterday,you swam yesterday.
+you / swim / last week,you swam last week.
+you / swim / an hour ago,you swam an hour ago.
+you / swim / tomorrow,you will swim tomorrow.
+you / swim / next week,you will swim next week.
+you / swim / soon,you will swim soon.
+you / learn / always,you always learn.
+you / learn / sometimes,you sometimes learn.
+you / learn / never,you never learn.
+you / learn / now,you are learning now.
+you / learn / at the moment,you are learning at the moment.
+you / learn / right now,you are learning right now.
+you / learn / yesterday,you learned yesterday.
+you / learn / last week,you learned last week.
+you / learn / an hour ago,you learned an hour ago.
+you / learn / tomorrow,you will learn tomorrow.
+you / learn / next week,you will learn next week.
+you / learn / soon,you will learn soon.
+you / shout / always,you always shout.
+you / shout / sometimes,you sometimes shout.
+you / shout / never,you never shout.
+you / shout / now,you are shouting now.
+you / shout / at the moment,you are shouting at the moment.
+you / shout / right now,you are shouting right now.
+you / shout / yesterday,you shouted yesterday.
+you / shout / last week,you shouted last week.
+you / shout / an hour ago,you shouted an hour ago.
+you / shout / tomorrow,you will shout tomorrow.
+you / shout / next week,you will shout next week.
+you / shout / soon,you will shout soon.
+we / jump / always,we always jump.
+we / jump / sometimes,we sometimes jump.
+we / jump / never,we never jump.
+we / jump / now,we are jumping now.
+we / jump / at the moment,we are jumping at the moment.
+we / jump / right now,we are jumping right now.
+we / jump / yesterday,we jumped yesterday.
+we / jump / last week,we jumped last week.
+we / jump / an hour ago,we jumped an hour ago.
+we / jump / tomorrow,we will jump tomorrow.
+we / jump / next week,we will jump next week.
+we / jump / soon,we will jump soon.
+we / sleep / always,we always sleep.
+we / sleep / sometimes,we sometimes sleep.
+we / sleep / never,we never sleep.
+we / sleep / now,we are sleeping now.
+we / sleep / at the moment,we are sleeping at the moment.
+we / sleep / right now,we are sleeping right now.
+we / sleep / yesterday,we slept yesterday.
+we / sleep / last week,we slept last week.
+we / sleep / an hour ago,we slept an hour ago.
+we / sleep / tomorrow,we will sleep tomorrow.
+we / sleep / next week,we will sleep next week.
+we / sleep / soon,we will sleep soon.
+we / walk / always,we always walk.
+we / walk / sometimes,we sometimes walk.
+we / walk / never,we never walk.
+we / walk / now,we are walking now.
+we / walk / at the moment,we are walking at the moment.
+we / walk / right now,we are walking right now.
+we / walk / yesterday,we walked yesterday.
+we / walk / last week,we walked last week.
+we / walk / an hour ago,we walked an hour ago.
+we / walk / tomorrow,we will walk tomorrow.
+we / walk / next week,we will walk next week.
+we / walk / soon,we will walk soon.
+we / run / always,we always run.
+we / run / sometimes,we sometimes run.
+we / run / never,we never run.
+we / run / now,we are running now.
+we / run / at the moment,we are running at the moment.
+we / run / right now,we are running right now.
+we / run / yesterday,we ran yesterday.
+we / run / last week,we ran last week.
+we / run / an hour ago,we ran an hour ago.
+we / run / tomorrow,we will run tomorrow.
+we / run / next week,we will run next week.
+we / run / soon,we will run soon.
+we / dance / always,we always dance.
+we / dance / sometimes,we sometimes dance.
+we / dance / never,we never dance.
+we / dance / now,we are dancing now.
+we / dance / at the moment,we are dancing at the moment.
+we / dance / right now,we are dancing right now.
+we / dance / yesterday,we danced yesterday.
+we / dance / last week,we danced last week.
+we / dance / an hour ago,we danced an hour ago.
+we / dance / tomorrow,we will dance tomorrow.
+we / dance / next week,we will dance next week.
+we / dance / soon,we will dance soon.
+we / sit / always,we always sit.
+we / sit / sometimes,we sometimes sit.
+we / sit / never,we never sit.
+we / sit / now,we are sitting now.
+we / sit / at the moment,we are sitting at the moment.
+we / sit / right now,we are sitting right now.
+we / sit / yesterday,we sat yesterday.
+we / sit / last week,we sat last week.
+we / sit / an hour ago,we sat an hour ago.
+we / sit / tomorrow,we will sit tomorrow.
+we / sit / next week,we will sit next week.
+we / sit / soon,we will sit soon.
+we / stand / always,we always stand.
+we / stand / sometimes,we sometimes stand.
+we / stand / never,we never stand.
+we / stand / now,we are standing now.
+we / stand / at the moment,we are standing at the moment.
+we / stand / right now,we are standing right now.
+we / stand / yesterday,we stood yesterday.
+we / stand / last week,we stood last week.
+we / stand / an hour ago,we stood an hour ago.
+we / stand / tomorrow,we will stand tomorrow.
+we / stand / next week,we will stand next week.
+we / stand / soon,we will stand soon.
+we / swim / always,we always swim.
+we / swim / sometimes,we sometimes swim.
+we / swim / never,we never swim.
+we / swim / now,we are swimming now.
+we / swim / at the moment,we are swimming at the moment.
+we / swim / right now,we are swimming right now.
+we / swim / yesterday,we swam yesterday.
+we / swim / last week,we swam last week.
+we / swim / an hour ago,we swam an hour ago.
+we / swim / tomorrow,we will swim tomorrow.
+we / swim / next week,we will swim next week.
+we / swim / soon,we will swim soon.
+we / learn / always,we always learn.
+we / learn / sometimes,we sometimes learn.
+we / learn / never,we never learn.
+we / learn / now,we are learning now.
+we / learn / at the moment,we are learning at the moment.
+we / learn / right now,we are learning right now.
+we / learn / yesterday,we learned yesterday.
+we / learn / last week,we learned last week.
+we / learn / an hour ago,we learned an hour ago.
+we / learn / tomorrow,we will learn tomorrow.
+we / learn / next week,we will learn next week.
+we / learn / soon,we will learn soon.
+we / shout / always,we always shout.
+we / shout / sometimes,we sometimes shout.
+we / shout / never,we never shout.
+we / shout / now,we are shouting now.
+we / shout / at the moment,we are shouting at the moment.
+we / shout / right now,we are shouting right now.
+we / shout / yesterday,we shouted yesterday.
+we / shout / last week,we shouted last week.
+we / shout / an hour ago,we shouted an hour ago.
+we / shout / tomorrow,we will shout tomorrow.
+we / shout / next week,we will shout next week.
+we / shout / soon,we will shout soon.
+they / jump / always,they always jump.
+they / jump / sometimes,they sometimes jump.
+they / jump / never,they never jump.
+they / jump / now,they are jumping now.
+they / jump / at the moment,they are jumping at the moment.
+they / jump / right now,they are jumping right now.
+they / jump / yesterday,they jumped yesterday.
+they / jump / last week,they jumped last week.
+they / jump / an hour ago,they jumped an hour ago.
+they / jump / tomorrow,they will jump tomorrow.
+they / jump / next week,they will jump next week.
+they / jump / soon,they will jump soon.
+they / sleep / always,they always sleep.
+they / sleep / sometimes,they sometimes sleep.
+they / sleep / never,they never sleep.
+they / sleep / now,they are sleeping now.
+they / sleep / at the moment,they are sleeping at the moment.
+they / sleep / right now,they are sleeping right now.
+they / sleep / yesterday,they slept yesterday.
+they / sleep / last week,they slept last week.
+they / sleep / an hour ago,they slept an hour ago.
+they / sleep / tomorrow,they will sleep tomorrow.
+they / sleep / next week,they will sleep next week.
+they / sleep / soon,they will sleep soon.
+they / walk / always,they always walk.
+they / walk / sometimes,they sometimes walk.
+they / walk / never,they never walk.
+they / walk / now,they are walking now.
+they / walk / at the moment,they are walking at the moment.
+they / walk / right now,they are walking right now.
+they / walk / yesterday,they walked yesterday.
+they / walk / last week,they walked last week.
+they / walk / an hour ago,they walked an hour ago.
+they / walk / tomorrow,they will walk tomorrow.
+they / walk / next week,they will walk next week.
+they / walk / soon,they will walk soon.
+they / run / always,they always run.
+they / run / sometimes,they sometimes run.
+they / run / never,they never run.
+they / run / now,they are running now.
+they / run / at the moment,they are running at the moment.
+they / run / right now,they are running right now.
+they / run / yesterday,they ran yesterday.
+they / run / last week,they ran last week.
+they / run / an hour ago,they ran an hour ago.
+they / run / tomorrow,they will run tomorrow.
+they / run / next week,they will run next week.
+they / run / soon,they will run soon.
+they / dance / always,they always dance.
+they / dance / sometimes,they sometimes dance.
+they / dance / never,they never dance.
+they / dance / now,they are dancing now.
+they / dance / at the moment,they are dancing at the moment.
+they / dance / right now,they are dancing right now.
+they / dance / yesterday,they danced yesterday.
+they / dance / last week,they danced last week.
+they / dance / an hour ago,they danced an hour ago.
+they / dance / tomorrow,they will dance tomorrow.
+they / dance / next week,they will dance next week.
+they / dance / soon,they will dance soon.
+they / sit / always,they always sit.
+they / sit / sometimes,they sometimes sit.
+they / sit / never,they never sit.
+they / sit / now,they are sitting now.
+they / sit / at the moment,they are sitting at the moment.
+they / sit / right now,they are sitting right now.
+they / sit / yesterday,they sat yesterday.
+they / sit / last week,they sat last week.
+they / sit / an hour ago,they sat an hour ago.
+they / sit / tomorrow,they will sit tomorrow.
+they / sit / next week,they will sit next week.
+they / sit / soon,they will sit soon.
+they / stand / always,they always stand.
+they / stand / sometimes,they sometimes stand.
+they / stand / never,they never stand.
+they / stand / now,they are standing now.
+they / stand / at the moment,they are standing at the moment.
+they / stand / right now,they are standing right now.
+they / stand / yesterday,they stood yesterday.
+they / stand / last week,they stood last week.
+they / stand / an hour ago,they stood an hour ago.
+they / stand / tomorrow,they will stand tomorrow.
+they / stand / next week,they will stand next week.
+they / stand / soon,they will stand soon.
+they / swim / always,they always swim.
+they / swim / sometimes,they sometimes swim.
+they / swim / never,they never swim.
+they / swim / now,they are swimming now.
+they / swim / at the moment,they are swimming at the moment.
+they / swim / right now,they are swimming right now.
+they / swim / yesterday,they swam yesterday.
+they / swim / last week,they swam last week.
+they / swim / an hour ago,they swam an hour ago.
+they / swim / tomorrow,they will swim tomorrow.
+they / swim / next week,they will swim next week.
+they / swim / soon,they will swim soon.
+they / learn / always,they always learn.
+they / learn / sometimes,they sometimes learn.
+they / learn / never,they never learn.
+they / learn / now,they are learning now.
+they / learn / at the moment,they are learning at the moment.
+they / learn / right now,they are learning right now.
+they / learn / yesterday,they learned yesterday.
+they / learn / last week,they learned last week.
+they / learn / an hour ago,they learned an hour ago.
+they / learn / tomorrow,they will learn tomorrow.
+they / learn / next week,they will learn next week.
+they / learn / soon,they will learn soon.
+they / shout / always,they always shout.
+they / shout / sometimes,they sometimes shout.
+they / shout / never,they never shout.
+they / shout / now,they are shouting now.
+they / shout / at the moment,they are shouting at the moment.
+they / shout / right now,they are shouting right now.
+they / shout / yesterday,they shouted yesterday.
+they / shout / last week,they shouted last week.
+they / shout / an hour ago,they shouted an hour ago.
+they / shout / tomorrow,they will shout tomorrow.
+they / shout / next week,they will shout next week.
+they / shout / soon,they will shout soon.
+he / jump / always,he always jumps.
+he / jump / sometimes,he sometimes jumps.
+he / jump / never,he never jumps.
+he / jump / now,he is jumping now.
+he / jump / at the moment,he is jumping at the moment.
+he / jump / right now,he is jumping right now.
+he / jump / yesterday,he jumped yesterday.
+he / jump / last week,he jumped last week.
+he / jump / an hour ago,he jumped an hour ago.
+he / jump / tomorrow,he will jump tomorrow.
+he / jump / next week,he will jump next week.
+he / jump / soon,he will jump soon.
+he / sleep / always,he always sleeps.
+he / sleep / sometimes,he sometimes sleeps.
+he / sleep / never,he never sleeps.
+he / sleep / now,he is sleeping now.
+he / sleep / at the moment,he is sleeping at the moment.
+he / sleep / right now,he is sleeping right now.
+he / sleep / yesterday,he slept yesterday.
+he / sleep / last week,he slept last week.
+he / sleep / an hour ago,he slept an hour ago.
+he / sleep / tomorrow,he will sleep tomorrow.
+he / sleep / next week,he will sleep next week.
+he / sleep / soon,he will sleep soon.
+he / walk / always,he always walks.
+he / walk / sometimes,he sometimes walks.
+he / walk / never,he never walks.
+he / walk / now,he is walking now.
+he / walk / at the moment,he is walking at the moment.
+he / walk / right now,he is walking right now.
+he / walk / yesterday,he walked yesterday.
+he / walk / last week,he walked last week.
+he / walk / an hour ago,he walked an hour ago.
+he / walk / tomorrow,he will walk tomorrow.
+he / walk / next week,he will walk next week.
+he / walk / soon,he will walk soon.
+he / run / always,he always runs.
+he / run / sometimes,he sometimes runs.
+he / run / never,he never runs.
+he / run / now,he is running now.
+he / run / at the moment,he is running at the moment.
+he / run / right now,he is running right now.
+he / run / yesterday,he ran yesterday.
+he / run / last week,he ran last week.
+he / run / an hour ago,he ran an hour ago.
+he / run / tomorrow,he will run tomorrow.
+he / run / next week,he will run next week.
+he / run / soon,he will run soon.
+he / dance / always,he always dances.
+he / dance / sometimes,he sometimes dances.
+he / dance / never,he never dances.
+he / dance / now,he is dancing now.
+he / dance / at the moment,he is dancing at the moment.
+he / dance / right now,he is dancing right now.
+he / dance / yesterday,he danced yesterday.
+he / dance / last week,he danced last week.
+he / dance / an hour ago,he danced an hour ago.
+he / dance / tomorrow,he will dance tomorrow.
+he / dance / next week,he will dance next week.
+he / dance / soon,he will dance soon.
+he / sit / always,he always sits.
+he / sit / sometimes,he sometimes sits.
+he / sit / never,he never sits.
+he / sit / now,he is sitting now.
+he / sit / at the moment,he is sitting at the moment.
+he / sit / right now,he is sitting right now.
+he / sit / yesterday,he sat yesterday.
+he / sit / last week,he sat last week.
+he / sit / an hour ago,he sat an hour ago.
+he / sit / tomorrow,he will sit tomorrow.
+he / sit / next week,he will sit next week.
+he / sit / soon,he will sit soon.
+he / stand / always,he always stands.
+he / stand / sometimes,he sometimes stands.
+he / stand / never,he never stands.
+he / stand / now,he is standing now.
+he / stand / at the moment,he is standing at the moment.
+he / stand / right now,he is standing right now.
+he / stand / yesterday,he stood yesterday.
+he / stand / last week,he stood last week.
+he / stand / an hour ago,he stood an hour ago.
+he / stand / tomorrow,he will stand tomorrow.
+he / stand / next week,he will stand next week.
+he / stand / soon,he will stand soon.
+he / swim / always,he always swims.
+he / swim / sometimes,he sometimes swims.
+he / swim / never,he never swims.
+he / swim / now,he is swimming now.
+he / swim / at the moment,he is swimming at the moment.
+he / swim / right now,he is swimming right now.
+he / swim / yesterday,he swam yesterday.
+he / swim / last week,he swam last week.
+he / swim / an hour ago,he swam an hour ago.
+he / swim / tomorrow,he will swim tomorrow.
+he / swim / next week,he will swim next week.
+he / swim / soon,he will swim soon.
+he / learn / always,he always learns.
+he / learn / sometimes,he sometimes learns.
+he / learn / never,he never learns.
+he / learn / now,he is learning now.
+he / learn / at the moment,he is learning at the moment.
+he / learn / right now,he is learning right now.
+he / learn / yesterday,he learned yesterday.
+he / learn / last week,he learned last week.
+he / learn / an hour ago,he learned an hour ago.
+he / learn / tomorrow,he will learn tomorrow.
+he / learn / next week,he will learn next week.
+he / learn / soon,he will learn soon.
+he / shout / always,he always shouts.
+he / shout / sometimes,he sometimes shouts.
+he / shout / never,he never shouts.
+he / shout / now,he is shouting now.
+he / shout / at the moment,he is shouting at the moment.
+he / shout / right now,he is shouting right now.
+he / shout / yesterday,he shouted yesterday.
+he / shout / last week,he shouted last week.
+he / shout / an hour ago,he shouted an hour ago.
+he / shout / tomorrow,he will shout tomorrow.
+he / shout / next week,he will shout next week.
+he / shout / soon,he will shout soon.
+she / jump / always,she always jumps.
+she / jump / sometimes,she sometimes jumps.
+she / jump / never,she never jumps.
+she / jump / now,she is jumping now.
+she / jump / at the moment,she is jumping at the moment.
+she / jump / right now,she is jumping right now.
+she / jump / yesterday,she jumped yesterday.
+she / jump / last week,she jumped last week.
+she / jump / an hour ago,she jumped an hour ago.
+she / jump / tomorrow,she will jump tomorrow.
+she / jump / next week,she will jump next week.
+she / jump / soon,she will jump soon.
+she / sleep / always,she always sleeps.
+she / sleep / sometimes,she sometimes sleeps.
+she / sleep / never,she never sleeps.
+she / sleep / now,she is sleeping now.
+she / sleep / at the moment,she is sleeping at the moment.
+she / sleep / right now,she is sleeping right now.
+she / sleep / yesterday,she slept yesterday.
+she / sleep / last week,she slept last week.
+she / sleep / an hour ago,she slept an hour ago.
+she / sleep / tomorrow,she will sleep tomorrow.
+she / sleep / next week,she will sleep next week.
+she / sleep / soon,she will sleep soon.
+she / walk / always,she always walks.
+she / walk / sometimes,she sometimes walks.
+she / walk / never,she never walks.
+she / walk / now,she is walking now.
+she / walk / at the moment,she is walking at the moment.
+she / walk / right now,she is walking right now.
+she / walk / yesterday,she walked yesterday.
+she / walk / last week,she walked last week.
+she / walk / an hour ago,she walked an hour ago.
+she / walk / tomorrow,she will walk tomorrow.
+she / walk / next week,she will walk next week.
+she / walk / soon,she will walk soon.
+she / run / always,she always runs.
+she / run / sometimes,she sometimes runs.
+she / run / never,she never runs.
+she / run / now,she is running now.
+she / run / at the moment,she is running at the moment.
+she / run / right now,she is running right now.
+she / run / yesterday,she ran yesterday.
+she / run / last week,she ran last week.
+she / run / an hour ago,she ran an hour ago.
+she / run / tomorrow,she will run tomorrow.
+she / run / next week,she will run next week.
+she / run / soon,she will run soon.
+she / dance / always,she always dances.
+she / dance / sometimes,she sometimes dances.
+she / dance / never,she never dances.
+she / dance / now,she is dancing now.
+she / dance / at the moment,she is dancing at the moment.
+she / dance / right now,she is dancing right now.
+she / dance / yesterday,she danced yesterday.
+she / dance / last week,she danced last week.
+she / dance / an hour ago,she danced an hour ago.
+she / dance / tomorrow,she will dance tomorrow.
+she / dance / next week,she will dance next week.
+she / dance / soon,she will dance soon.
+she / sit / always,she always sits.
+she / sit / sometimes,she sometimes sits.
+she / sit / never,she never sits.
+she / sit / now,she is sitting now.
+she / sit / at the moment,she is sitting at the moment.
+she / sit / right now,she is sitting right now.
+she / sit / yesterday,she sat yesterday.
+she / sit / last week,she sat last week.
+she / sit / an hour ago,she sat an hour ago.
+she / sit / tomorrow,she will sit tomorrow.
+she / sit / next week,she will sit next week.
+she / sit / soon,she will sit soon.
+she / stand / always,she always stands.
+she / stand / sometimes,she sometimes stands.
+she / stand / never,she never stands.
+she / stand / now,she is standing now.
+she / stand / at the moment,she is standing at the moment.
+she / stand / right now,she is standing right now.
+she / stand / yesterday,she stood yesterday.
+she / stand / last week,she stood last week.
+she / stand / an hour ago,she stood an hour ago.
+she / stand / tomorrow,she will stand tomorrow.
+she / stand / next week,she will stand next week.
+she / stand / soon,she will stand soon.
+she / swim / always,she always swims.
+she / swim / sometimes,she sometimes swims.
+she / swim / never,she never swims.
+she / swim / now,she is swimming now.
+she / swim / at the moment,she is swimming at the moment.
+she / swim / right now,she is swimming right now.
+she / swim / yesterday,she swam yesterday.
+she / swim / last week,she swam last week.
+she / swim / an hour ago,she swam an hour ago.
+she / swim / tomorrow,she will swim tomorrow.
+she / swim / next week,she will swim next week.
+she / swim / soon,she will swim soon.
+she / learn / always,she always learns.
+she / learn / sometimes,she sometimes learns.
+she / learn / never,she never learns.
+she / learn / now,she is learning now.
+she / learn / at the moment,she is learning at the moment.
+she / learn / right now,she is learning right now.
+she / learn / yesterday,she learned yesterday.
+she / learn / last week,she learned last week.
+she / learn / an hour ago,she learned an hour ago.
+she / learn / tomorrow,she will learn tomorrow.
+she / learn / next week,she will learn next week.
+she / learn / soon,she will learn soon.
+she / shout / always,she always shouts.
+she / shout / sometimes,she sometimes shouts.
+she / shout / never,she never shouts.
+she / shout / now,she is shouting now.
+she / shout / at the moment,she is shouting at the moment.
+she / shout / right now,she is shouting right now.
+she / shout / yesterday,she shouted yesterday.
+she / shout / last week,she shouted last week.
+she / shout / an hour ago,she shouted an hour ago.
+she / shout / tomorrow,she will shout tomorrow.
+she / shout / next week,she will shout next week.
+she / shout / soon,she will shout soon.
+it / jump / always,it always jumps.
+it / jump / sometimes,it sometimes jumps.
+it / jump / never,it never jumps.
+it / jump / now,it is jumping now.
+it / jump / at the moment,it is jumping at the moment.
+it / jump / right now,it is jumping right now.
+it / jump / yesterday,it jumped yesterday.
+it / jump / last week,it jumped last week.
+it / jump / an hour ago,it jumped an hour ago.
+it / jump / tomorrow,it will jump tomorrow.
+it / jump / next week,it will jump next week.
+it / jump / soon,it will jump soon.
+it / sleep / always,it always sleeps.
+it / sleep / sometimes,it sometimes sleeps.
+it / sleep / never,it never sleeps.
+it / sleep / now,it is sleeping now.
+it / sleep / at the moment,it is sleeping at the moment.
+it / sleep / right now,it is sleeping right now.
+it / sleep / yesterday,it slept yesterday.
+it / sleep / last week,it slept last week.
+it / sleep / an hour ago,it slept an hour ago.
+it / sleep / tomorrow,it will sleep tomorrow.
+it / sleep / next week,it will sleep next week.
+it / sleep / soon,it will sleep soon.
+it / walk / always,it always walks.
+it / walk / sometimes,it sometimes walks.
+it / walk / never,it never walks.
+it / walk / now,it is walking now.
+it / walk / at the moment,it is walking at the moment.
+it / walk / right now,it is walking right now.
+it / walk / yesterday,it walked yesterday.
+it / walk / last week,it walked last week.
+it / walk / an hour ago,it walked an hour ago.
+it / walk / tomorrow,it will walk tomorrow.
+it / walk / next week,it will walk next week.
+it / walk / soon,it will walk soon.
+it / run / always,it always runs.
+it / run / sometimes,it sometimes runs.
+it / run / never,it never runs.
+it / run / now,it is running now.
+it / run / at the moment,it is running at the moment.
+it / run / right now,it is running right now.
+it / run / yesterday,it ran yesterday.
+it / run / last week,it ran last week.
+it / run / an hour ago,it ran an hour ago.
+it / run / tomorrow,it will run tomorrow.
+it / run / next week,it will run next week.
+it / run / soon,it will run soon.
+it / dance / always,it always dances.
+it / dance / sometimes,it sometimes dances.
+it / dance / never,it never dances.
+it / dance / now,it is dancing now.
+it / dance / at the moment,it is dancing at the moment.
+it / dance / right now,it is dancing right now.
+it / dance / yesterday,it danced yesterday.
+it / dance / last week,it danced last week.
+it / dance / an hour ago,it danced an hour ago.
+it / dance / tomorrow,it will dance tomorrow.
+it / dance / next week,it will dance next week.
+it / dance / soon,it will dance soon.
+it / sit / always,it always sits.
+it / sit / sometimes,it sometimes sits.
+it / sit / never,it never sits.
+it / sit / now,it is sitting now.
+it / sit / at the moment,it is sitting at the moment.
+it / sit / right now,it is sitting right now.
+it / sit / yesterday,it sat yesterday.
+it / sit / last week,it sat last week.
+it / sit / an hour ago,it sat an hour ago.
+it / sit / tomorrow,it will sit tomorrow.
+it / sit / next week,it will sit next week.
+it / sit / soon,it will sit soon.
+it / stand / always,it always stands.
+it / stand / sometimes,it sometimes stands.
+it / stand / never,it never stands.
+it / stand / now,it is standing now.
+it / stand / at the moment,it is standing at the moment.
+it / stand / right now,it is standing right now.
+it / stand / yesterday,it stood yesterday.
+it / stand / last week,it stood last week.
+it / stand / an hour ago,it stood an hour ago.
+it / stand / tomorrow,it will stand tomorrow.
+it / stand / next week,it will stand next week.
+it / stand / soon,it will stand soon.
+it / swim / always,it always swims.
+it / swim / sometimes,it sometimes swims.
+it / swim / never,it never swims.
+it / swim / now,it is swimming now.
+it / swim / at the moment,it is swimming at the moment.
+it / swim / right now,it is swimming right now.
+it / swim / yesterday,it swam yesterday.
+it / swim / last week,it swam last week.
+it / swim / an hour ago,it swam an hour ago.
+it / swim / tomorrow,it will swim tomorrow.
+it / swim / next week,it will swim next week.
+it / swim / soon,it will swim soon.
+it / learn / always,it always learns.
+it / learn / sometimes,it sometimes learns.
+it / learn / never,it never learns.
+it / learn / now,it is learning now.
+it / learn / at the moment,it is learning at the moment.
+it / learn / right now,it is learning right now.
+it / learn / yesterday,it learned yesterday.
+it / learn / last week,it learned last week.
+it / learn / an hour ago,it learned an hour ago.
+it / learn / tomorrow,it will learn tomorrow.
+it / learn / next week,it will learn next week.
+it / learn / soon,it will learn soon.
+it / shout / always,it always shouts.
+it / shout / sometimes,it sometimes shouts.
+it / shout / never,it never shouts.
+it / shout / now,it is shouting now.
+it / shout / at the moment,it is shouting at the moment.
+it / shout / right now,it is shouting right now.
+it / shout / yesterday,it shouted yesterday.
+it / shout / last week,it shouted last week.
+it / shout / an hour ago,it shouted an hour ago.
+it / shout / tomorrow,it will shout tomorrow.
+it / shout / next week,it will shout next week.
+it / shout / soon,it will shout soon.
