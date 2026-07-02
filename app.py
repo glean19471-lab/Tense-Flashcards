@@ -4,7 +4,7 @@ import random
 import requests
 
 # 🔗 ลิงก์ Web App URL สำหรับส่งข้อมูลเข้า Google Sheets
-WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCXPY7eWWWV0VVoJ5j8ZE8QMxVAxjgKbMFIDYC4x_-b3iy3ES0EiFZu0dyhVatFSHq/exec"
+WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxeZT136b91yANgmhYkkJLJvOmlHy8qJqPNPlaTgYy9lmk8Wr7w0AfvapZ_bqW4-Xwl/exec"
 
 # 1. ฟังก์ชันแปลงลิงก์ Google Drive ให้แสดงผลเป็นรูปภาพขนาดกำลังดี โหลดไว ไม่หน่วงหน้าเว็บ
 def get_image_url(url):
