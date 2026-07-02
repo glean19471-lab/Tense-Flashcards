@@ -86,11 +86,11 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # 4. เมนูด้านข้าง (Sidebar): ฟอร์มเก็บข้อมูลนักเรียน และ กระดานคะแนนสะสมสด
-st.sidebar.title("🎮 Tense Master v3")
+st.sidebar.title("🎮 Tense Master")
 st.sidebar.markdown("---")
 st.sidebar.subheader("👨‍🎓 ข้อมูลผู้เล่น")
 student_name = st.sidebar.text_input("ชื่อ-นามสกุล:", placeholder="ด.ช. สมชาย ตั้งใจเรียน")
-student_class = st.sidebar.selectbox("ระดับชั้น:", ["กรุณาเลือกชั้นเรียน", "ป.1", "ป.4", "ป.5", "ป.6"])
+student_class = st.sidebar.selectbox("ระดับชั้น:", ["กรุณาเลือกชั้นเรียน", "ป.4", "ป.5", "ป.6"])
 student_no = st.sidebar.text_input("เลขที่:", placeholder="12")
 
 # สร้างตัวจำสถานะคะแนนสะสมชั่วคราวในหน้าจอเบราว์เซอร์ของนักเรียน
