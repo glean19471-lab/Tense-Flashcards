@@ -6,15 +6,15 @@ import requests
 # 🔗 1. ลิงก์ Web App URL สำหรับส่งข้อมูลเข้า Google Sheets
 WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCXPY7eWWWV0VVoJ5j8ZE8QMxVAxjgKbMFIDYC4x_-b3iy3ES0EiFZu0dyhVatFSHq/exec"
 
-# 🎵 2. ใส่ลิงก์เสียง MP3 (มีเฉพาะเสียงสุ่ม, ถูก, ผิด ไม่มีเสียงเพลงพื้นหลัง)
-SOUND_RANDOM = "https://www.soundjay.com/misc/sounds/magic-chime-01.mp3"  # เสียงตอนกดสุ่มการ์ด
-SOUND_CORRECT = "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" # เสียงตอนตอบถูก
-SOUND_WRONG = "https://www.soundjay.com/buttons/sounds/buzzer-14.mp3"      # เสียงตอนตอบผิด
+# 🎵 2. ใส่ลิงก์เสียง MP3 จาก Google Drive ของคุณครู
+SOUND_RANDOM = "https://drive.google.com/file/d/1JDb1riClltoo5M8ccBgvgSSR0d3jrpE-/view?usp=drive_link"  # เสียงตอนกดสุ่มการ์ด
+SOUND_CORRECT = "https://drive.google.com/file/d/17HhuyZpQd5dLjYtkJl5AlPLGYgMwI6o0/view?usp=drive_link" # เสียงตอนตอบถูก
+SOUND_WRONG = "https://drive.google.com/file/d/1xfwgRdILbNQSykWbzjIH9qHu7WfliBCn/view?usp=drive_link"  # เสียงตอนตอบผิด
 
 # 3. ฟังก์ชันสำหรับเล่นเสียงเอฟเฟกต์แบบซ่อนเครื่องเล่น
 def play_sound(sound_url):
     try:
-        # ถ้าเป็นลิงก์จาก Google Drive ให้แปลงเป็นลิงก์สำหรับดาวน์โหลดตรง
+        # แปลงลิงก์ Google Drive ให้เป็นลิงก์สำหรับเล่นเสียงโดยตรง
         if 'drive.google.com' in sound_url:
             file_id = sound_url.split('/d/')[1].split('/')[0]
             direct_url = f"https://drive.google.com/uc?export=download&id={file_id}"
