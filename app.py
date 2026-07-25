@@ -2,33 +2,36 @@ import streamlit as st
 import pandas as pd
 import random
 import requests
+import base64
 
 # 🔗 1. ลิงก์ Web App URL สำหรับส่งข้อมูลเข้า Google Sheets
 WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCXPY7eWWWV0VVoJ5j8ZE8QMxVAxjgKbMFIDYC4x_-b3iy3ES0EiFZu0dyhVatFSHq/exec"
 
-# 🎵 2. ใส่ลิงก์เสียง MP3 จาก Google Drive ของคุณครู
-SOUND_RANDOM = "https://drive.google.com/file/d/1JDb1riClltoo5M8ccBgvgSSR0d3jrpE-/view?usp=drive_link"  # เสียงตอนกดสุ่มการ์ด
-SOUND_CORRECT = "https://drive.google.com/file/d/17HhuyZpQd5dLjYtkJl5AlPLGYgMwI6o0/view?usp=drive_link" # เสียงตอนตอบถูก
-SOUND_WRONG = "https://drive.google.com/file/d/1xfwgRdILbNQSykWbzjIH9qHu7WfliBCn/view?usp=drive_link"  # เสียงตอนตอบผิด
+# 🎵 2. ใส่ลิงก์เสียง MP3
+SOUND_RANDOM = "https://drive.google.com/file/d/1JDb1riClltoo5M8ccBgvgSSR0d3jrpE-/view?usp=drive_link"
+SOUND_CORRECT = "https://drive.google.com/file/d/17HhuyZpQd5dLjYtkJl5AlPLGYgMwI6o0/view?usp=drive_link"
+SOUND_WRONG = "https://drive.google.com/file/d/1xfwgRdILbNQSykWbzjIH9qHu7WfliBCn/view?usp=drive_link"
 
-# 3. ฟังก์ชันสำหรับเล่นเสียงเอฟเฟกต์แบบซ่อนเครื่องเล่น
+# 3. ฟังก์ชันสำหรับเล่นเสียงเอฟเฟกต์ด้วย JavaScript (แก้ปัญหา Autoplay ถูกบล็อก)
 def play_sound(sound_url):
     try:
-        # แปลงลิงก์ Google Drive ให้เป็นลิงก์สำหรับเล่นเสียงโดยตรง
+        # แปลงลิงก์ Google Drive เป็นลิงก์ดาวน์โหลดตรง
         if 'drive.google.com' in sound_url:
             file_id = sound_url.split('/d/')[1].split('/')[0]
             direct_url = f"https://drive.google.com/uc?export=download&id={file_id}"
         else:
             direct_url = sound_url
             
-        # สร้าง HTML Audio tag และให้เล่นอัตโนมัติ (autoplay)
+        # ใช้ JavaScript สร้างและเล่น Audio ทันที
         audio_html = f"""
-        <audio autoplay style="display:none;">
-            <source src="{direct_url}" type="audio/mpeg">
-        </audio>
+            <script>
+                var audio = new Audio("{direct_url}");
+                audio.play();
+            </script>
         """
-        st.markdown(audio_html, unsafe_allow_html=True)
-    except:
+        import streamlit.components.v1 as components
+        components.html(audio_html, height=0, width=0)
+    except Exception as e:
         pass
 
 # 4. ฟังก์ชันแปลงลิงก์รูปภาพ
@@ -214,9 +217,9 @@ if st.session_state.cards:
                 # 🎵 เล่นเสียงเอฟเฟกต์ตามผลลัพธ์ (ถูก / ผิด)
                 # ==========================================
                 if is_correct_ans:
-                    play_sound(SOUND_CORRECT)
+                    if SOUND_CORRECT: play_sound(SOUND_CORRECT)
                 else:
-                    play_sound(SOUND_WRONG)
+                    if SOUND_WRONG: play_sound(SOUND_WRONG)
                 
                 # ส่งข้อมูลลง Google Sheets
                 if WEB_APP_URL:
