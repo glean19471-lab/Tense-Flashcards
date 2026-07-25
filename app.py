@@ -12,27 +12,30 @@ SOUND_RANDOM = "https://drive.google.com/file/d/1JDb1riClltoo5M8ccBgvgSSR0d3jrpE
 SOUND_CORRECT = "https://drive.google.com/file/d/17HhuyZpQd5dLjYtkJl5AlPLGYgMwI6o0/view?usp=drive_link"
 SOUND_WRONG = "https://drive.google.com/file/d/1xfwgRdILbNQSykWbzjIH9qHu7WfliBCn/view?usp=drive_link"
 
-# 3. ฟังก์ชันสำหรับเล่นเสียงเอฟเฟกต์ด้วย JavaScript (แก้ปัญหา Autoplay ถูกบล็อก)
-def play_sound(sound_url):
+# 3. ฟังก์ชันโหลดไฟล์เสียงมาฝังในหน้าเว็บ (แก้ปัญหาเสียงไม่ออก 100%)
+@st.cache_data
+def get_audio_base64(sound_url):
     try:
-        # แปลงลิงก์ Google Drive เป็นลิงก์ดาวน์โหลดตรง
         if 'drive.google.com' in sound_url:
             file_id = sound_url.split('/d/')[1].split('/')[0]
             direct_url = f"https://drive.google.com/uc?export=download&id={file_id}"
         else:
             direct_url = sound_url
-            
-        # ใช้ JavaScript สร้างและเล่น Audio ทันที
+        response = requests.get(direct_url)
+        return base64.b64encode(response.content).decode()
+    except:
+        return ""
+
+# ฟังก์ชันสั่งเล่นเสียงทันที
+def play_sound(sound_url):
+    b64 = get_audio_base64(sound_url)
+    if b64:
         audio_html = f"""
-            <script>
-                var audio = new Audio("{direct_url}");
-                audio.play();
-            </script>
+            <audio autoplay="true" style="display:none;">
+                <source src="data:audio/mp3;base64,{b64}" type="audio/mpeg">
+            </audio>
         """
-        import streamlit.components.v1 as components
-        components.html(audio_html, height=0, width=0)
-    except Exception as e:
-        pass
+        st.markdown(audio_html, unsafe_allow_html=True)
 
 # 4. ฟังก์ชันแปลงลิงก์รูปภาพ
 def get_image_url(url):
@@ -44,7 +47,7 @@ def get_image_url(url):
     except:
         return ""
 
-# 5. ฟังก์ชันโหลดข้อมูล
+# 5. ฟังก์ชันโหลดข้อมูลคำศัพท์
 @st.cache_data
 def load_data():
     vocab_file = 'ข้อมูลใช้ทำสื่อ.xlsx - คำศัพท์และลิงค์รูป.csv'
@@ -77,7 +80,7 @@ except Exception as e:
     st.error("❌ ไม่พบไฟล์ข้อมูลคำศัพท์ในระบบ")
     st.stop()
 
-# 6. ตกแต่งดีไซน์
+# 6. ตกแต่งดีไซน์หน้าเว็บ
 st.set_page_config(page_title="Tense Master Pro", layout="wide")
 st.markdown("""
     <style>
