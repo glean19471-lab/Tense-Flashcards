@@ -6,15 +6,18 @@ import requests
 # 🔗 ลิงก์ Web App URL สำหรับส่งข้อมูลเข้า Google Sheets ของคุณครู
 WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCXPY7eWWWV0VVoJ5j8ZE8QMxVAxjgKbMFIDYC4x_-b3iy3ES0EiFZu0dyhVatFSHq/exec"
 
+# 1. ฟังก์ชันแปลงลิงก์ Google Drive ให้แสดงผลเป็นรูปภาพขนาดกำลังดี โหลดไว
 def get_image_url(url):
     try:
         if isinstance(url, str) and 'drive.google.com' in url:
             file_id = url.split('/d/')[1].split('/')[0]
+            # ใช้ระบบ Thumbnail เพื่อข้ามระบบล็อกความปลอดภัย และจำกัดขนาดภาพที่ 400px เพื่อให้โหลดเร็ว
             return f"https://drive.google.com/thumbnail?id={file_id}&sz=w400"
         return url
     except:
         return ""
 
+# 2. ฟังก์ชันโหลดและเตรียมข้อมูลจากไฟล์ CSV
 @st.cache_data
 def load_data():
     vocab_file = 'ข้อมูลใช้ทำสื่อ.xlsx - คำศัพท์และลิงค์รูป.csv'
@@ -23,14 +26,18 @@ def load_data():
     df_vocab = pd.read_csv(vocab_file)
     df_qa = pd.read_csv(qa_file)
     
+    # แยกกลุ่มคำศัพท์ ประธาน กริยา คำบอกเวลา
     subjects = df_vocab[['ประธาน', 'ลิงค์รูป']].dropna().to_dict('records')
     verbs = df_vocab[['กริยา', 'ลิงค์รูป.1']].dropna().rename(columns={'ลิงค์รูป.1': 'ลิงค์รูป'}).to_dict('records')
     
     times_df = df_vocab[['คำบอกเวลา/กริยาวิเศษณ์บอกความถี่', 'ลิงค์รูป.2']].dropna()
     times_df.rename(columns={'คำบอกเวลา/กริยาวิเศษณ์บอกความถี่': 'คำบอกเวลา', 'ลิงค์รูป.2': 'ลิงค์รูป'}, inplace=True)
+    
+    # แก้คำพิมพ์ผิดในไฟล์คำศัพท์ให้ตรงกับคีย์เวิร์ดในไฟล์เฉลย
     times_df['คำบอกเวลา'] = times_df['คำบอกเวลา'].replace({'lask week': 'last week'})
     times_list = times_df.to_dict('records')
     
+    # จับคู่กลุ่มคำบอกเวลากับโครงสร้างแต่ละ Tense ตามแผนการสอน 4 หน้าย่อย
     tenses_map = {
         'Present Simple Tense': ['always', 'sometimes', 'never'],
         'Present Continuous Tense': ['now', 'at the moment', 'right now'],
@@ -38,15 +45,19 @@ def load_data():
         'Future Simple Tense': ['tomorrow', 'next week', 'soon']
     }
     
+    # ดึงโจทย์และเฉลยมาทำเป็น Dictionary เพื่อจับคู่คำตอบอย่างแม่นยำ
     qa_dict = dict(zip(df_qa['โจทย์'].str.strip(), df_qa['เฉลย'].str.strip()))
+    
     return subjects, verbs, times_list, qa_dict, tenses_map
 
+# เรียกโหลดข้อมูลเข้าสู่ระบบแอป
 try:
     subjects, verbs, times_list, qa_dict, tenses_map = load_data()
 except Exception as e:
     st.error("❌ ไม่พบไฟล์ข้อมูลคำศัพท์ในระบบ กรุณาตรวจสอบว่าชื่อไฟล์ CSV ใน GitHub ตรงกับในโค้ดนี้หรือไม่")
     st.stop()
 
+# 3. ตกแต่งดีไซน์หน้าตาของแฟลชการ์ด (Digital Card CSS Style)
 st.set_page_config(page_title="Tense Master Pro", layout="wide")
 st.markdown("""
     <style>
@@ -74,6 +85,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+# 4. เมนูด้านข้าง (Sidebar): ฟอร์มเก็บข้อมูลนักเรียน และ กระดานคะแนนสะสมสด
 st.sidebar.title("🎮 Tense Master v3")
 st.sidebar.markdown("---")
 st.sidebar.subheader("👨‍🎓 ข้อมูลผู้เล่น")
@@ -81,6 +93,7 @@ student_name = st.sidebar.text_input("ชื่อ-นามสกุล:", plac
 student_class = st.sidebar.selectbox("ระดับชั้น:", ["กรุณาเลือกชั้นเรียน", "ป.1", "ป.4", "ป.5", "ป.6"])
 student_no = st.sidebar.text_input("เลขที่:", placeholder="12")
 
+# สร้างตัวจำสถานะคะแนนสะสมชั่วคราวในหน้าจอเบราว์เซอร์ของนักเรียน
 if 'score_correct' not in st.session_state: st.session_state.score_correct = 0
 if 'score_incorrect' not in st.session_state: st.session_state.score_incorrect = 0
 
@@ -95,22 +108,28 @@ if st.sidebar.button("🔄 รีเซ็ตคะแนนสะสมให�
     st.rerun()
 
 st.sidebar.markdown("---")
+# เมนูเปลี่ยนหน้าหมวดหมู่แบ่งตามโครงสร้าง Tense ทั้ง 4 หน้า
 selected_tense = st.sidebar.radio("เลือกบทเรียน Tense:", list(tenses_map.keys()))
 
+# 5. หน้าจอหลักของสื่อการสอนแฟลชการ์ด
 st.title(f"✨ {selected_tense}")
 
+# กรองคำบอกเวลาให้เหลือเฉพาะของ Tense ที่เลือกในปัจจุบัน
 valid_time_words = tenses_map[selected_tense]
 filtered_times = [t for t in times_list if str(t['คำบอกเวลา']).strip() in valid_time_words]
 
+# ตัวจำสถานะของการ์ดที่สุ่มได้ในรอบนั้นๆ
 if 'cards' not in st.session_state: st.session_state.cards = None
 if 'ans_view' not in st.session_state: st.session_state.ans_view = False
 
+# ปุ่มสำหรับกดสุ่มคำศัพท์ทั้ง 3 ใบพร้อมกัน
 if st.button("🎲 สุ่มคำศัพท์ (Random Cards)", type="primary", use_container_width=True):
     st.session_state.cards = (random.choice(subjects), random.choice(verbs), random.choice(filtered_times))
     st.session_state.ans_view = False
 
 st.markdown("---")
 
+# แสดงผลการ์ดภาพและศัพท์ดิจิทัลทั้ง 3 ใบ
 if st.session_state.cards:
     sub, vrb, tm = st.session_state.cards
     col1, col2, col3 = st.columns(3)
@@ -132,9 +151,11 @@ if st.session_state.cards:
 
     st.markdown("---")
     
+    # ส่วนพื้นที่พิมพ์คำตอบแต่งประโยคของนักเรียน
     st.subheader("📝 เขียนประโยคของคุณที่นี่:")
     user_input = st.text_input("ตัวอย่างประโยค: I always jump.", placeholder="ระวังตัวพิมพ์ใหญ่ขึ้นต้นประโยค และจุด Full Stop ด้วยนะ!")
     
+    # สร้างคีย์เวิร์ดคำค้นหาเพื่อใช้ดึงข้อมูลเฉลย
     key = f"{sub['ประธาน']} / {vrb['กริยา']} / {tm['คำบอกเวลา']}"
     answer = qa_dict.get(key, "ไม่พบข้อมูลเฉลยในระบบ")
     
@@ -149,39 +170,46 @@ if st.session_state.cards:
                 # ---------------------------------------------------------
                 # ส่วนอัปเกรด: ระบบตรวจคำตอบแบบเข้มงวด (Strict Mode)
                 # ---------------------------------------------------------
-                # เคลียร์ช่องว่างส่วนเกินที่เด็กอาจเผลอเคาะสเปซบาร์เกิน
+                # จัดการช่องว่างส่วนเกินที่เด็กอาจเคาะเกิน (แต่ยังคงรูปแบบตัวพิมพ์เล็ก-ใหญ่ตามเดิม)
                 user_clean = " ".join(user_input.strip().split()) 
                 ans_clean = " ".join(str(answer).strip().split())
                 
-                # ตรวจเงื่อนไข 1: ถูกต้องเป๊ะ 100%
+                # ตรวจเงื่อนไข 1: ถูกต้องเป๊ะ 100% (ตัวพิมพ์เล็ก/ใหญ่ และจุดต้องตรงกันทุกประการ)
                 if user_clean == ans_clean:
                     st.success("🌟 Correct! ยอดเยี่ยมมาก แต่งประโยคได้ถูกต้องตามหลักไวยากรณ์เป๊ะๆ")
                     st.balloons()
                     result_text = "ถูกต้อง"
                     st.session_state.score_correct += 1
                     
-                # ตรวจเงื่อนไข 2: ถูกทุกคำ แต่ตัวพิมพ์เล็ก-ใหญ่ผิด
-                elif user_clean.lower() == ans_clean.lower():
-                    if user_clean[0].islower():
-                        st.error("❌ เกือบถูกแล้ว! ตามหลักไวยากรณ์ประโยคต้อง **ขึ้นต้นด้วยตัวอักษรพิมพ์ใหญ่ (Capital letter)** เสมอนะครับ")
-                    else:
-                        st.error("❌ เกือบถูกแล้ว! ระวังเรื่องการใช้ตัวพิมพ์เล็ก/พิมพ์ใหญ่ในประโยคให้ถูกต้องด้วยนะครับ (เช่น คำว่า I ต้องเป็นพิมพ์ใหญ่เสมอ)")
-                    result_text = "ผิด (ไวยากรณ์ตัวพิมพ์ใหญ่/เล็ก)"
-                    st.session_state.score_incorrect += 1
-                    
-                # ตรวจเงื่อนไข 3: เด็กลืมใส่จุด Full stop
-                elif user_clean + "." == ans_clean or user_clean.lower() + "." == ans_clean.lower():
+                # ตรวจเงื่อนไข 2: ลืมจุด Full Stop อย่างเดียว (แต่ตัวพิมพ์เล็ก-ใหญ่ถูกต้อง)
+                elif user_clean + "." == ans_clean:
                     st.error("❌ เกือบถูกแล้ว! จบประโยคแล้วอย่าลืมใส่ **จุด Full Stop (.)** ด้วยนะครับ")
                     result_text = "ผิด (ลืมจุด Full stop)"
                     st.session_state.score_incorrect += 1
                     
-                # ตรวจเงื่อนไข 4: ผิดโครงสร้าง Tense หรือสะกดคำผิด
+                # ตรวจเงื่อนไข 3: เด็กลืมตัวพิมพ์ใหญ่ขึ้นต้นประโยค หรือ พิมพ์คำในประโยคผิดรูปแบบพิมพ์เล็ก/ใหญ่
+                elif user_clean.lower() == ans_clean.lower() or (user_clean + ".").lower() == ans_clean.lower():
+                    # เช็กเพิ่มเติมว่าตัวแรกไม่ใช่พิมพ์ใหญ่ใช่ไหม
+                    if user_clean[0].islower():
+                        st.error("❌ ผิดครับ! ตามหลักไวยากรณ์ประโยคต้อง **ขึ้นต้นด้วยตัวอักษรพิมพ์ใหญ่ (Capital letter)** เสมอนะครับ")
+                        result_text = "ผิด (ไม่ได้ขึ้นต้นด้วยพิมพ์ใหญ่)"
+                    # เช็กเรื่องลืมจุดร่วมด้วย
+                    elif (user_clean + ".").lower() == ans_clean.lower() and "." not in user_clean:
+                        st.error("❌ ผิดครับ! ระวังเรื่องการใช้ตัวพิมพ์เล็ก/พิมพ์ใหญ่ให้ถูกต้อง และอย่าลืมจุด Full Stop (.) ด้วยนะ")
+                        result_text = "ผิด (ไวยากรณ์ตัวพิมพ์เล็ก-ใหญ่ และลืมจุด)"
+                    else:
+                        st.error("❌ ผิดครับ! ระวังเรื่องการใช้ตัวพิมพ์เล็ก/พิมพ์ใหญ่ในประโยคให้ถูกต้องด้วยนะครับ (เช่น คำว่า I ต้องเป็นพิมพ์ใหญ่เสมอ)")
+                        result_text = "ผิด (ไวยากรณ์ตัวพิมพ์เล็ก-ใหญ่)"
+                    
+                    st.session_state.score_incorrect += 1
+                    
+                # ตรวจเงื่อนไข 4: ผิดโครงสร้าง Tense หรือสะกดคำผิดไปเลย
                 else:
                     st.error("❌ Try again! ยังไม่ถูกน้า ลองเช็กโครงสร้างประโยค การเติม s/es/ing หรือกริยาช่อง 2 อีกรอบ")
                     result_text = "ผิด"
                     st.session_state.score_incorrect += 1
                 
-                # ฟังก์ชันทำงานหลังบ้าน: ส่งข้อมูลคะแนนเข้า Google Sheets
+                # 📡 ฟังก์ชันทำงานหลังบ้าน: ส่งข้อมูลคะแนนยิงเข้าสู่ Google Sheets
                 if WEB_APP_URL:
                     try:
                         payload = {
@@ -193,6 +221,7 @@ if st.session_state.cards:
                             "user_answer": user_clean,
                             "result": result_text
                         }
+                        # ส่งข้อมูลพร้อมตั้ง Timeout 3 วินาที เพื่อป้องกันหน้าเว็บชะงักหากเซิร์ฟเวอร์ตอบรับช้า
                         requests.post(WEB_APP_URL, json=payload, timeout=3)
                         st.toast("📊 ระบบได้ทำการบันทึกคะแนนและคำตอบลง Google Sheets เรียบร้อยแล้ว!", icon="💾")
                     except:
