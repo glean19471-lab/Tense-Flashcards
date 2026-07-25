@@ -3,7 +3,7 @@ import pandas as pd
 import random
 import requests
 
-# 🔗 ลิงก์ Web App URL สำหรับส่งข้อมูลเข้า Google Sheets ของคุณครู
+# 🔗 ลิงก์ Web App URL สำหรับส่งข้อมูลเข้า Google Sheets
 WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCXPY7eWWWV0VVoJ5j8ZE8QMxVAxjgKbMFIDYC4x_-b3iy3ES0EiFZu0dyhVatFSHq/exec"
 
 # 1. ฟังก์ชันแปลงลิงก์ Google Drive ให้แสดงผลเป็นรูปภาพขนาดกำลังดี โหลดไว
@@ -167,47 +167,51 @@ if st.session_state.cards:
             elif not user_input.strip():
                 st.warning("กรุณาพิมพ์ประโยคในช่องว่างก่อนกดส่งคำตอบครับ")
             else:
-                # ---------------------------------------------------------
-                # ส่วนอัปเกรด: ระบบตรวจคำตอบแบบเข้มงวด (Strict Mode)
-                # ---------------------------------------------------------
-                # จัดการช่องว่างส่วนเกินที่เด็กอาจเคาะเกิน (แต่ยังคงรูปแบบตัวพิมพ์เล็ก-ใหญ่ตามเดิม)
+                # ล้างช่องว่างส่วนเกิน แต่ยังคงรูปแบบพิมพ์เล็กพิมพ์ใหญ่ไว้
                 user_clean = " ".join(user_input.strip().split()) 
                 ans_clean = " ".join(str(answer).strip().split())
                 
-                # ตรวจเงื่อนไข 1: ถูกต้องเป๊ะ 100% (ตัวพิมพ์เล็ก/ใหญ่ และจุดต้องตรงกันทุกประการ)
+                # ---------------------------------------------------------
+                # ระบบตรวจคำตอบแบบเข้มงวด (Strict Mode) ลำดับใหม่
+                # ---------------------------------------------------------
+                
+                # 1. ตรวจความถูกต้อง 100% (Capitalization และ Punctuation เป๊ะ)
                 if user_clean == ans_clean:
                     st.success("🌟 Correct! ยอดเยี่ยมมาก แต่งประโยคได้ถูกต้องตามหลักไวยากรณ์เป๊ะๆ")
                     st.balloons()
                     result_text = "ถูกต้อง"
                     st.session_state.score_correct += 1
-                    
-                # ตรวจเงื่อนไข 2: ลืมจุด Full Stop อย่างเดียว (แต่ตัวพิมพ์เล็ก-ใหญ่ถูกต้อง)
-                elif user_clean + "." == ans_clean:
-                    st.error("❌ เกือบถูกแล้ว! จบประโยคแล้วอย่าลืมใส่ **จุด Full Stop (.)** ด้วยนะครับ")
-                    result_text = "ผิด (ลืมจุด Full stop)"
-                    st.session_state.score_incorrect += 1
-                    
-                # ตรวจเงื่อนไข 3: เด็กลืมตัวพิมพ์ใหญ่ขึ้นต้นประโยค หรือ พิมพ์คำในประโยคผิดรูปแบบพิมพ์เล็ก/ใหญ่
-                elif user_clean.lower() == ans_clean.lower() or (user_clean + ".").lower() == ans_clean.lower():
-                    # เช็กเพิ่มเติมว่าตัวแรกไม่ใช่พิมพ์ใหญ่ใช่ไหม
-                    if user_clean[0].islower():
-                        st.error("❌ ผิดครับ! ตามหลักไวยากรณ์ประโยคต้อง **ขึ้นต้นด้วยตัวอักษรพิมพ์ใหญ่ (Capital letter)** เสมอนะครับ")
-                        result_text = "ผิด (ไม่ได้ขึ้นต้นด้วยพิมพ์ใหญ่)"
-                    # เช็กเรื่องลืมจุดร่วมด้วย
-                    elif (user_clean + ".").lower() == ans_clean.lower() and "." not in user_clean:
-                        st.error("❌ ผิดครับ! ระวังเรื่องการใช้ตัวพิมพ์เล็ก/พิมพ์ใหญ่ให้ถูกต้อง และอย่าลืมจุด Full Stop (.) ด้วยนะ")
-                        result_text = "ผิด (ไวยากรณ์ตัวพิมพ์เล็ก-ใหญ่ และลืมจุด)"
-                    else:
-                        st.error("❌ ผิดครับ! ระวังเรื่องการใช้ตัวพิมพ์เล็ก/พิมพ์ใหญ่ในประโยคให้ถูกต้องด้วยนะครับ (เช่น คำว่า I ต้องเป็นพิมพ์ใหญ่เสมอ)")
-                        result_text = "ผิด (ไวยากรณ์ตัวพิมพ์เล็ก-ใหญ่)"
-                    
-                    st.session_state.score_incorrect += 1
-                    
-                # ตรวจเงื่อนไข 4: ผิดโครงสร้าง Tense หรือสะกดคำผิดไปเลย
+                
+                # 2. ถ้าไม่ถูก 100% ให้มาเช็กว่าพลาดตรงไหน
                 else:
-                    st.error("❌ Try again! ยังไม่ถูกน้า ลองเช็กโครงสร้างประโยค การเติม s/es/ing หรือกริยาช่อง 2 อีกรอบ")
-                    result_text = "ผิด"
-                    st.session_state.score_incorrect += 1
+                    st.session_state.score_incorrect += 1 # หักคะแนนเป็นตอบผิดทันที
+                    
+                    # 2.1 ลืมแค่จุด Full Stop อย่างเดียว (ตัวพิมพ์เล็กใหญ่ถูกหมด)
+                    if user_clean + "." == ans_clean:
+                        st.error("❌ เกือบถูกแล้ว! จบประโยคแล้วอย่าลืมใส่ **จุด Full Stop (.)** ด้วยนะครับ")
+                        result_text = "ผิด (ลืมจุด Full stop)"
+                        
+                    # 2.2 ถ้าตัวอักษรเหมือนกันหมด แต่ผิดเรื่องพิมพ์เล็ก-ใหญ่
+                    elif user_clean.lower() == ans_clean.lower() or (user_clean + ".").lower() == ans_clean.lower():
+                        
+                        # เช็กเรื่องตัวอักษรตัวแรก
+                        if user_clean[0].islower():
+                            if "." not in user_clean and (user_clean + ".").lower() == ans_clean.lower():
+                                st.error("❌ ผิดครับ! ตามหลักไวยากรณ์ประโยคต้อง **ขึ้นต้นด้วยตัวอักษรพิมพ์ใหญ่** และอย่าลืม **จุด Full stop (.)** นะครับ")
+                                result_text = "ผิด (ไม่ได้ขึ้นต้นพิมพ์ใหญ่ และลืมจุด)"
+                            else:
+                                st.error("❌ ผิดครับ! ตามหลักไวยากรณ์ประโยคต้อง **ขึ้นต้นด้วยตัวอักษรพิมพ์ใหญ่ (Capital letter)** เสมอนะครับ")
+                                result_text = "ผิด (ไม่ได้ขึ้นต้นด้วยพิมพ์ใหญ่)"
+                                
+                        # ถ้าตัวแรกพิมพ์ใหญ่แล้ว แต่มีคำอื่นผิดรูปแบบ (เช่น i) หรือ ลืมแค่จุดพร้อมๆ กับคำอื่นพิมพ์ผิด
+                        else:
+                            st.error("❌ ผิดครับ! ระวังเรื่องการใช้ตัวพิมพ์เล็ก/พิมพ์ใหญ่ในประโยคให้ถูกต้องด้วยนะครับ (เช่น คำว่า I ต้องเป็นพิมพ์ใหญ่เสมอ)")
+                            result_text = "ผิด (ไวยากรณ์ตัวพิมพ์เล็ก-ใหญ่)"
+                            
+                    # 2.3 ผิดโครงสร้าง Tense กริยาช่อง 2/3 เติม s/es หรือสะกดผิด
+                    else:
+                        st.error("❌ Try again! ยังไม่ถูกน้า ลองเช็กโครงสร้างประโยค การเติม s/es/ing หรือกริยาช่อง 2 อีกรอบ")
+                        result_text = "ผิด (โครงสร้าง/สะกดคำ)"
                 
                 # 📡 ฟังก์ชันทำงานหลังบ้าน: ส่งข้อมูลคะแนนยิงเข้าสู่ Google Sheets
                 if WEB_APP_URL:
@@ -221,7 +225,6 @@ if st.session_state.cards:
                             "user_answer": user_clean,
                             "result": result_text
                         }
-                        # ส่งข้อมูลพร้อมตั้ง Timeout 3 วินาที เพื่อป้องกันหน้าเว็บชะงักหากเซิร์ฟเวอร์ตอบรับช้า
                         requests.post(WEB_APP_URL, json=payload, timeout=3)
                         st.toast("📊 ระบบได้ทำการบันทึกคะแนนและคำตอบลง Google Sheets เรียบร้อยแล้ว!", icon="💾")
                     except:
