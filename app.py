@@ -84,7 +84,8 @@ st.sidebar.title("🎮 Tense Master v3")
 st.sidebar.markdown("---")
 st.sidebar.subheader("👨‍🎓 ข้อมูลผู้เล่น")
 student_name = st.sidebar.text_input("ชื่อ-นามสกุล:", placeholder="ด.ช. สมชาย ตั้งใจเรียน")
-student_class = st.sidebar.selectbox("ระดับชั้น:", ["กรุณาเลือกชั้นเรียน", "ป.1", "ป.4", "ป.5", "ป.6"])
+# แก้ไข: นำ ป.1 ออกจากตัวเลือกเรียบร้อยแล้ว
+student_class = st.sidebar.selectbox("ระดับชั้น:", ["กรุณาเลือกชั้นเรียน", "ป.4", "ป.5", "ป.6"])
 student_no = st.sidebar.text_input("เลขที่:", placeholder="12")
 
 if 'score_correct' not in st.session_state: st.session_state.score_correct = 0
@@ -159,7 +160,6 @@ if st.session_state.cards:
                 # 🛠️ ระบบตรวจคำตอบแบบเข้มงวดขั้นสุด! (Ultimate Strict Mode)
                 # ---------------------------------------------------------
                 # บังคับให้เฉลย "ต้นฉบับ" ต้องขึ้นต้นด้วยตัวพิมพ์ใหญ่เสมอ
-                # (ป้องกันกรณีที่คุณครูอาจจะพิมพ์เฉลยใน Excel เป็นตัวพิมพ์เล็ก ระบบจะแก้ให้อัตโนมัติ)
                 if len(ans_clean) > 0:
                     ans_clean = ans_clean[0].upper() + ans_clean[1:]
                 
@@ -190,7 +190,7 @@ if st.session_state.cards:
                     result_text = "ผิด (ลืมจุด Full stop)"
                     st.session_state.score_incorrect += 1
                     
-                # กรณีที่ 4: ตัวแรกพิมพ์ใหญ่แล้ว แต่พิมพ์พิมพ์เล็ก-ใหญ่ในประโยคผิดจุดอื่นๆ (เช่น I alWays jump.)
+                # กรณีที่ 4: ตัวแรกพิมพ์ใหญ่แล้ว แต่พิมพ์พิมพ์เล็ก-ใหญ่ในประโยคผิดจุดอื่นๆ
                 elif user_clean.lower() == ans_clean.lower() or (user_clean + ".").lower() == ans_clean.lower():
                     if "." not in user_clean and (user_clean + ".").lower() == ans_clean.lower():
                         st.error("❌ ผิดครับ! ระวังเรื่องการใช้ตัวพิมพ์เล็ก/พิมพ์ใหญ่ให้ถูกต้อง และอย่าลืม **จุด Full stop (.)** นะครับ")
