@@ -2,40 +2,25 @@ import streamlit as st
 import pandas as pd
 import random
 import requests
-import base64
+import os
 
 # 🔗 1. ลิงก์ Web App URL สำหรับส่งข้อมูลเข้า Google Sheets
 WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCXPY7eWWWV0VVoJ5j8ZE8QMxVAxjgKbMFIDYC4x_-b3iy3ES0EiFZu0dyhVatFSHq/exec"
 
-# 🎵 2. ใส่ลิงก์เสียง MP3
-SOUND_RANDOM = "https://drive.google.com/file/d/1JDb1riClltoo5M8ccBgvgSSR0d3jrpE-/view?usp=drive_link"
-SOUND_CORRECT = "https://drive.google.com/file/d/17HhuyZpQd5dLjYtkJl5AlPLGYgMwI6o0/view?usp=drive_link"
-SOUND_WRONG = "https://drive.google.com/file/d/1xfwgRdILbNQSykWbzjIH9qHu7WfliBCn/view?usp=drive_link"
+# 🎵 2. เรียกใช้ชื่อไฟล์เสียง MP3 ที่อัปโหลดไว้ใน GitHub โดยตรง
+SOUND_RANDOM = "random.mp3"
+SOUND_CORRECT = "correct.mp3"
+SOUND_WRONG = "wrong.mp3"
 
-# 3. ฟังก์ชันโหลดไฟล์เสียงมาฝังในหน้าเว็บ (แก้ปัญหาเสียงไม่ออก 100%)
-@st.cache_data
-def get_audio_base64(sound_url):
+# 3. ฟังก์ชันเล่นเสียงแบบ Local (โหลดปุ๊บติดปั๊บ เสถียร 100%)
+def play_sound(file_name):
     try:
-        if 'drive.google.com' in sound_url:
-            file_id = sound_url.split('/d/')[1].split('/')[0]
-            direct_url = f"https://drive.google.com/uc?export=download&id={file_id}"
-        else:
-            direct_url = sound_url
-        response = requests.get(direct_url)
-        return base64.b64encode(response.content).decode()
-    except:
-        return ""
-
-# ฟังก์ชันสั่งเล่นเสียงทันที
-def play_sound(sound_url):
-    b64 = get_audio_base64(sound_url)
-    if b64:
-        audio_html = f"""
-            <audio autoplay="true" style="display:none;">
-                <source src="data:audio/mp3;base64,{b64}" type="audio/mpeg">
-            </audio>
-        """
-        st.markdown(audio_html, unsafe_allow_html=True)
+        if os.path.exists(file_name):
+            with open(file_name, "rb") as f:
+                audio_bytes = f.read()
+            st.audio(audio_bytes, format="audio/mp3", autoplay=True)
+    except Exception as e:
+        pass
 
 # 4. ฟังก์ชันแปลงลิงก์รูปภาพ
 def get_image_url(url):
@@ -80,18 +65,21 @@ except Exception as e:
     st.error("❌ ไม่พบไฟล์ข้อมูลคำศัพท์ในระบบ")
     st.stop()
 
-# 6. ตกแต่งดีไซน์หน้าเว็บ
+# 6. ตกแต่งดีไซน์หน้าเว็บ และสั่งซ่อนเครื่องเล่นเสียง
 st.set_page_config(page_title="Tense Master Pro", layout="wide")
 st.markdown("""
     <style>
     .card { background-color: #ffffff; border-radius: 15px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; border: 2px solid #f0f2f6; }
     .card-title { color: #555; font-size: 16px; font-weight: bold; text-transform: uppercase; }
     .vocab-text { font-size: 32px; font-weight: 800; color: #1E3A8A; margin-top: 12px; text-align: center; }
+    
+    /* ซ่อนเครื่องเล่นเสียงทั้งหมดในหน้าเว็บ ไม่ให้เด็กๆ เห็น */
+    audio { display: none !important; }
     </style>
     """, unsafe_allow_html=True)
 
 # 7. เมนูด้านข้าง
-st.sidebar.title("🎮 Tense Master v4 (Audio)")
+st.sidebar.title("🎮 Tense Master v4.2 (Stable Audio)")
 st.sidebar.markdown("---")
 st.sidebar.subheader("👨‍🎓 ข้อมูลผู้เล่น")
 student_name = st.sidebar.text_input("ชื่อ-นามสกุล:", placeholder="ด.ช. สมชาย ตั้งใจเรียน")
@@ -127,8 +115,7 @@ if 'ans_view' not in st.session_state: st.session_state.ans_view = False
 if st.button("🎲 สุ่มคำศัพท์ (Random Cards)", type="primary", use_container_width=True):
     st.session_state.cards = (random.choice(subjects), random.choice(verbs), random.choice(filtered_times))
     st.session_state.ans_view = False
-    if SOUND_RANDOM:
-        play_sound(SOUND_RANDOM)
+    play_sound(SOUND_RANDOM)
 
 st.markdown("---")
 
@@ -220,19 +207,19 @@ if st.session_state.cards:
                 # 🎵 เล่นเสียงเอฟเฟกต์ตามผลลัพธ์ (ถูก / ผิด)
                 # ==========================================
                 if is_correct_ans:
-                    if SOUND_CORRECT: play_sound(SOUND_CORRECT)
+                    play_sound(SOUND_CORRECT)
                 else:
-                    if SOUND_WRONG: play_sound(SOUND_WRONG)
+                    play_sound(SOUND_WRONG)
                 
-                # ส่งข้อมูลลง Google Sheets
+                # ส่งข้อมูลลง Google Sheets (ใส่ timeout ป้องกันการค้าง)
                 if WEB_APP_URL:
                     try:
                         payload = {
                             "name": student_name, "class": student_class, "no": student_no,
                             "tense": selected_tense, "question": key, "user_answer": user_clean, "result": result_text
                         }
-                        requests.post(WEB_APP_URL, json=payload, timeout=3)
-                        st.toast("📊 ระบบได้ทำการบันทึกคะแนนและคำตอบลง Google Sheets เรียบร้อยแล้ว!", icon="💾")
+                        requests.post(WEB_APP_URL, json=payload, timeout=5)
+                        st.toast("📊 ระบบได้ทำการบันทึกคะแนนลง Google Sheets เรียบร้อยแล้ว!", icon="💾")
                     except:
                         pass
                         
