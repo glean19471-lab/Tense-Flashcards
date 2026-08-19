@@ -79,7 +79,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # 7. เมนูด้านข้าง
-st.sidebar.title("🎮 Tense Master v4.2")
+st.sidebar.title("🎮 Tense Master")
 st.sidebar.markdown("---")
 st.sidebar.subheader("👨‍🎓 ข้อมูลผู้เล่น")
 student_name = st.sidebar.text_input("ชื่อ-นามสกุล:", placeholder="ด.ช. สมชาย ตั้งใจเรียน")
